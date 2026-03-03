@@ -1,0 +1,73 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0x" />
+  <title>Certificate - Rittu Soney</title>
+  <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body style="background-color: rgb(17, 24, 39); color: #6f7070;;" >
+
+  <!-- 🌟 NAVBAR - Fixed and Scrolling Effect -->
+  <nav class="custom-header1" style="background:rgba(83, 81, 81, 0.466);box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="index.html" class="nav-link" style="font-size: 32px; font-weight: 800;">Rittu Soney.</a>
+        <ul style="display: flex; gap: 1rem;">
+        <li><a href="index.html" class="nav-link" >Home</a></li>
+        <li style="color: white;">»</li>
+        <li><a class="nav-link" href="certificates.html"> Certificate</a></li>
+        </ul>
+      </div>
+  </nav>
+<!-- Main Body -->
+ <section id="certificate">
+        
+            <h2 class="APHeading" >My Certificates<span style="color: rgb(69, 190, 241);">.</span></h2>
+            
+            <div id="cert-grid">
+                </div>
+        
+    </section>
+  <script>
+    async function fetchCertificates() {
+    const apiKey = 'AIzaSyBP-lVWOYEMdYIwo15y3pqpI-14-IhIVdc'; 
+    const folderId = '17X7pg83kqop0CY5te-jgRXwPe15nj0sE'; 
+    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+trashed=false&key=${apiKey}&fields=files(id,name)`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const grid = document.getElementById('cert-grid');
+
+        if (data.error) {
+            console.error("Google API Error:", data.error.message);
+            grid.innerHTML = `<p style="color:red;">Failed to load certificates.</p>`;
+            return; 
+        }
+
+        if (data.files && data.files.length > 0) {
+            data.files.forEach(file => {
+                const imgUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=w800`;
+                const card = `
+                    <div class="border p-2 rounded shadow-sm hover:shadow-lg transition-shadow">
+                        <img src="${imgUrl}" alt="${file.name}" class="w-full h-48 object-cover rounded">
+                        <p class="mt-2 text-center text-sm font-semibold truncate px-2">${file.name}</p>
+                    </div>`;
+                grid.innerHTML += card;
+            });
+        } else {
+             grid.innerHTML = `<p>No certificates found.</p>`;
+        }
+    } catch (error) {
+        console.error("Network error:", error);
+    }
+}
+
+// Call the function when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    fetchCertificates();
+});
+  </script>
+</body>
+</html>

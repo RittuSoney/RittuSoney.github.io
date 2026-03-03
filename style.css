@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
+
+        /* Make all images responsive by default */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         body {
-            background-color: white;
+            background-color: rgb(17, 24, 39);
             color: #1f2937;
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -19,7 +25,8 @@
             margin-right: 20px;
         }
 
-        .custom-header {
+        .custom-header, .custom-header1 {
+            background: transparent;
             position: fixed;       /* fixed */
             top: 0;                /* top-0 */
             left: 0;               /* left-0 */
@@ -30,16 +37,18 @@
             padding-bottom: 1rem;
             padding-left: 2rem;    /* px-8 (left & right padding 2rem = 32px) */
             padding-right: 2rem;
-            background: transparent;   /* start transparent */
         }
-        .custom-header.scrolled {
+        .custom-header.scrolled{
             background:rgba(0, 0, 0, 0.5); /* change this to your theme color */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* subtle shadow */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        @media (min-width: 1024px) {
-            .custom-header{
-            padding-left: 5rem;   /* px-20 = 5rem (80px) */
-            padding-right: 5rem;
+        @media (max-width: 768px) {
+            /* Make the navbar items stack vertically instead of side-by-side */
+            .custom-header div {
+                flex-direction: column;
+                justify-content: center;
+                gap: 1rem;
+                text-align: center;
             }
         }
         /* nav bar icons */
@@ -59,7 +68,7 @@
         @keyframes blink { 50% { border-color: transparent; } }
         /* Hero Background Image (Placeholder) */
         .hero-bg {
-            height: 100vh;                /* full screen height */
+            height: 97vh;                /* full screen height */
             display: flex;                /* enable flexbox */
             flex-direction: column;       /* stack children vertically */
             justify-content: center;      /* center along vertical axis */
@@ -71,31 +80,30 @@
             z-index: 10;
             text-align: center;
             }
-            /*16px gap between children */
+           
         .idk > * + * {
-            margin-top: 1rem; /* 16px */
+            margin-top: 1rem; 
         }
 
         .button1 {
-            display: inline-flex;              /* flex like Tailwind's inline-flex */
-            align-items: center;               /* vertical align center */
-            font-size: 1.5rem;               /* ~text-lg */
-            font-weight: 600;                  /* font-semibold */
-            padding: 0.75rem 2rem;             /* px-8 py-3 */
-            background-color: #0ea5e9;         /* bg-sky-500 */
-            border-radius: 9999px;             /* fully rounded */
-            color: white;                      /* text color */
-            text-decoration: none;             /* no underline */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* shadow-xl */
-            transition: all 0.3s ease;         /* transition-all */
+            display: inline-flex;              
+            align-items: center;              
+            font-size: 1.5rem;               
+            font-weight: 600;                  
+            padding: 0.75rem 2rem;             
+            background-color: #0ea5e9;         
+            border-radius: 9999px;             
+            color: white;                      
+            text-decoration: none;            
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
         }
         .button1:hover {
-            background-color: #0284c7;         /* hover:bg-sky-600 */
+            background-color: #0284c7;       
         }
         .button-icon {
-            width: 20px;                       /* w-5 */
-            height: 20px;                      /* h-5 */
-            margin-right: 0.5rem;              /* mr-2 */
+            width: 20px;                       
+            height: 20px;                    
+            margin-right: 0.5rem;             
         }
 
         .text1{ color:white; font-size: 3.75rem; line-height: 1;font-weight: 800;}
@@ -133,7 +141,7 @@
             font-size: 3rem;
             line-height: 2.5rem;
             font-weight: 800;
-            color: rgb(31, 41, 55);
+            color: #6f7070;;
             margin-bottom: 2rem;
         }
         @media (min-width: 1024px) {
@@ -147,7 +155,7 @@
         .about-section  {
             padding-top: 4rem;
             padding-bottom: 4rem;
-            background-color: white;
+            background-color: rgb(17, 24, 39);
         }
         @media (min-width: 768px) {
             .about-section {
@@ -160,8 +168,7 @@
             max-width: 80rem;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 0%;
             display: grid;
             gap: 3rem;
             align-items: center;
@@ -194,18 +201,26 @@
         }
 
         .about-item {
-            background: #fff;
-            border-radius: 0.5rem;
-            padding: 2rem;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: rgb(192, 203, 228);
+            border-radius: 2rem;
+            padding: 1rem;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             display: grid;
             gap: 2rem
         }
-
+@media (min-width: 640px) {
+            .Ccontainer {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
         .aboutCnt {
             order: 1;
         }
-        @media (min-width: 768px) {
+        
+        @media (min-width: 640px) {
             .aboutOrder2 {
                 order: 2;
             }
@@ -245,7 +260,7 @@
         }
 
         .PContainer {
-            max-width: 80rem;
+            
             margin-left: auto;
             margin-right: auto;
             padding-left: 1rem;
@@ -269,21 +284,23 @@
         .project-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
-            gap: 1.5rem; /* Equivalent to gap-6 */
+            gap: 1.5rem;
         }
-        /* 2. Medium Screens (Tablets and up) - Equivalent to md:grid-cols-2 */
+        /* 2. Medium Screens (Tablets and up) */
         @media (min-width: 768px) {
             .project-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns */
             }
         }
-        /* 3. Large Screens (Desktops and up) - Equivalent to lg:grid-cols-3 */
+        /* 3. Large Screens (Desktops and up) */
         @media (min-width: 1024px) {
             .project-grid {
                 grid-template-columns: repeat(3, 1fr); /* 3 columns */
             }
         }
         .project-item {
+            max-width: 80rem;
+            max-height: 21rem;
             overflow: hidden;
             position: relative;
             cursor: pointer;
@@ -320,8 +337,36 @@
               line-height: 1;
             }
         }
+        /*Certificate Section*/
+        .certificate-link { 
+            color:rgb(17, 24, 39); text-decoration: none; font-size: 42px; font-weight: 800;
+        }
+        .certificate-link:hover { color: rgb(69, 190, 241);}
+
+        #certificate{
+            padding-top: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /*CV / Resume*/
+        .btn-outline {
+            background:rgb(17, 24, 39);       
+            border: none; 
+            color: #374151; 
+        }
+
+        .btn-outline:hover {
+            background-color: #f9fafb; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-color: #9ca3af; 
+        }
+
+
+
         /*"do you like my work" section alignment*/
-        .Ccontainer {
+        .Ccontainer{
             max-width: 56rem; /* 4xl */
             margin-left: auto;
             margin-right: auto;
@@ -338,7 +383,7 @@
         }
 
         @media (min-width: 1024px) {
-            .container {
+            .Ccontainer {
                 padding-left: 2rem;
                 padding-right: 2rem;
             }
@@ -355,7 +400,7 @@
         .custom-section {
             padding-top: 3rem;        /* py-12 → 3rem (48px) */
             padding-bottom: 3rem;
-            background-color: #c2cddfd0; /* bg-gray-50 */
+            background-color: #ffffff3a;
             display: flex;             /* flex */
             align-items: center;       /* items-center (vertical center) */
             justify-content: center;   /* justify-center (horizontal center) */
@@ -375,21 +420,75 @@
             font-weight: 500;             /* font-medium */
         }
 
-
-        .bg{
-            height: 50vh; 
-            display: flex;                /* enable flexbox */
-            flex-direction: column;       /* stack children vertically */
-            justify-content: center;      /* center along vertical axis */
-            align-items: center;          /* center along horizontal axis */
-            background-image: url('images/contactBg.png'); background-size: cover; background-position: center;}
-        .details{ display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-left: 1rem; justify-content: flex-start;}
-        .contact-form { padding: 4rem 2rem; max-width: 600px; margin: 0 auto; }
-        .contact-form form { display: flex; flex-direction: column; gap: 1rem; }
-        .contact-form input, .contact-form textarea { padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 5px; }
-        .btn:hover {background: #91b7f5;}
-        .contact-icon {
-            width: 1.25rem;      /* w-5 */
-            height: 1.25rem;     /* h-5 */
-            color: #f87171;      /* text-red-400 */
+         /* --- CONTACT SECTION LAYOUT ---*/
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows sections to stack on mobile */
+            gap: 4rem;
+            max-width: 1100px;
+            width: 100%;
         }
+        .contact-wrapper {
+            /* Adds a dark overlay on top of your background image */
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('images/contactBg.png') center/cover no-repeat;
+            min-height: calc(100vh - 85px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+        .contact-left {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-left h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            color: #ffffff;
+        }
+        /* Social Icons */
+        .social-details { display: flex; flex-direction: column; gap: 1.75rem; }
+        .details { display: flex; align-items: center; gap: 0.75rem; color: #afafaf; }
+        .details a { color: rgb(175, 175, 175); text-decoration: none; }
+        .contact-icon { width: 1.5rem; height: 1.5rem; color: #f87171; }
+        .contact-right {
+            flex: 1;
+            min-width: 300px;
+        }
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        .form-group input, .form-group textarea {
+            padding: 1rem;
+            background-color: #d1d5db;
+            border: none;
+            color: #1f2937;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: 2px solid #6b7280;
+        }
+
+        .submit-btn {
+            background-color: #d1d5db;
+            color: #111827;
+            border: none;
+            padding: 0.75rem 3rem;
+            font-family: 'Cascadia Code', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 1rem;
+        }
+        .submit-btn:hover { background-color: #9ca3af; }
+    
